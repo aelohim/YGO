@@ -1,9 +1,10 @@
 import React from "react";
+import '../portfolio/portfolio.css'
 
 export default function PortfolioComponent() {
     return (
         <>
-            <div>
+            <div className="portfoliodiv">
                 PortFolio
             </div>
         </>

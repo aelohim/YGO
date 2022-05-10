@@ -7,17 +7,16 @@ import PortfolioComponent from '../portfolio';
 export default function HomeComponent() {
     return (
         <>
+        
             <Container>
-                <Row>
-                    <Col>
+                <Row>               
                         <FilterComponent></FilterComponent>
-                    </Col>
                 </Row>
                 <Row>
                     <Col>
                         <PortfolioComponent></PortfolioComponent>
                     </Col>
-                    <Col>
+                    <Col xs={3}>
                         <SearchcontainerComponent></SearchcontainerComponent>
                     </Col>
                 </Row>
