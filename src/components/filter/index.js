@@ -1,7 +1,6 @@
 import React from "react";
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button";
-import Dropdown from "react-bootstrap/Dropdown";
 import { Col, Row, FormGroup, InputGroup, FormControl } from "react-bootstrap";
 import '../filter/filter.css';
 
@@ -11,18 +10,18 @@ export default function FilterComponent() {
             <Row className="filterform">
                 <Col>
                     <Form>
-                        <Form.Group className="mb-1" controlId="filtro">
+                        <Form.Group className="mb-1" id="filtro">
                             <Form.Label>Nombre</Form.Label>
-                            <Form.Control type="text" placeholder="Enter name" controlId="txt_listname"/>
+                            <Form.Control type="text" placeholder="Enter name" id="txt_listname"/>
                             <Form.Text className="text-muted">
                                 puede ser una carpeta, una lista o un deck.
                             </Form.Text>
                         </Form.Group>
 
-                        <Button className="m-1 " variant="primary" type="submit" controlId="btn_new">
+                        <Button className="m-1 " variant="primary" type="submit" id="btn_new">
                             Crear
                         </Button>
-                        <Button className="m-1" variant="danger" controlId="btn_delete">
+                        <Button className="m-1" variant="danger" id="btn_delete">
                             Borrar
                         </Button>
                         <FormGroup className="mb-1">
@@ -53,9 +52,9 @@ export default function FilterComponent() {
                 </Col>
                 <Col>
                     <Form>
-                        <Form.Group className="mb-1" controlId="control">
+                        <Form.Group className="mb-1" id="control">
                             <Form.Label>Buscar</Form.Label>
-                            <InputGroup className="mb-3" controlId="txt_search">
+                            <InputGroup className="mb-3" id="txt_search">
                                 <FormControl
                                     placeholder="Ingrese el nombre de la carta"
                                     aria-label="Recipient's username"
@@ -67,19 +66,27 @@ export default function FilterComponent() {
                             </InputGroup>
                         </Form.Group>
                         <Form.Group>
-                            <Button className="m-1 " variant="primary" controlId="btn_sort">
+                            <Button className="m-1 " variant="primary" id="btn_sort">
                                 Ordenar
                             </Button>
-                            <Button className="m-1 " variant="primary" controlId="btn_clear">
+                            <Button className="m-1 " variant="primary" id="btn_clear">
                             Limpiar
                         </Button>
                         </Form.Group>
                         <Form.Group>
-                            <Button className="m-1" variant="primary" controlId="btn_next">
+                            <Button className="m-1" variant="primary" id="btn_next">
                                 Siguiente
                             </Button>
-                            <Button className="m-1" variant="primary" controlId="btn_before">
+                            <Button className="m-1" variant="primary" id="btn_before">
                                 Posterior
+                            </Button>
+                        </Form.Group>
+                        <Form.Group>
+                            <Button className="m-1" variant="primary" id="btn_add">
+                                Agregar
+                            </Button>
+                            <Button className="m-1" variant="primary" id="btn_less">
+                                Quitar
                             </Button>
                         </Form.Group>
                     </Form>

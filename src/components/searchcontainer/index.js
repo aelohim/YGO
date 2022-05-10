@@ -1,53 +1,23 @@
-import React, { useEffect, useState } from 'react';
 import '../searchcontainer/searchcontainer.css'
+import '../cardselectcomponent/index.js'
+import CardselectedComponent from '../cardselectcomponent/index.js';
+import Button from "react-bootstrap/Button";
+import { useState } from 'react';
 
-export default function SearchcontainerComponent({ titulo }) {
-    const [cardList, setCardList] = useState({ data: [] });
-
-
-    useEffect(() => {
-        async function getItems() {
-            const options = { method: 'GET', headers: { Accept: 'application/json' } }
-            const response = await fetch('https://db.ygoprodeck.com/api/v7/cardinfo.php', options);
-            const resp = await response.json();
-
-            
-            const aux = resp.data.map(item => item.type).filter((valor, indice) => {
-                return resp.data.map(item => item.type).indexOf(valor) === indice;
-            })
-            const categorias = aux.filter((valor, indice) => { return aux.indexOf(valor) === indice; }
-            )
-            console.log(categorias);
-
-            setCardList(resp);
-        };
-        getItems();
-    }, []);
-    useEffect(() => {
-        async function getItems() {
-            const options = { method: 'GET', headers: { Accept: 'application/json' } }
-            const response = await fetch('https://db.ygoprodeck.com/api/v7/cardinfo.php', options);
-            const resp = await response.json();
-
-            
-            const aux = resp.data.map(item => item.race).filter((valor, indice) => {
-                return resp.data.map(item => item.race).indexOf(valor) === indice;
-            })
-            const races = aux.filter((valor, indice) => { return aux.indexOf(valor) === indice; }
-            )
-            console.log(races);
-
-            setCardList(resp);
-        };
-        getItems();
-    }, []);
-
+export default function SearchcontainerComponent({ cardList, callback }) {
+    const [selectedCard, setSelectedCard] = useState({ id: 0 });
+    const selectCardHandler = (card) => {
+        console.log(card);
+        setSelectedCard(card)
+    }
 
     return (<>
-        <h2> Cartas </h2>
-        {cardList && cardList.data.length > 0 && cardList.data.map(card =>
-            <img src={card.card_images[0].image_url_small}></img>
-
-        )}</>
+        <div className='searchContainer'>
+            <Button className="m-1" variant="danger" controlId="btn_searchadd" onClick={() => { callback(selectedCard) }}> + </Button>
+            {cardList && cardList.data.length > 0 && cardList.data.map(card =>
+                <CardselectedComponent card={card} callback={selectCardHandler} selected={card.id === selectedCard.id}  ></CardselectedComponent>
+            )}
+        </div>
+    </>
     );
 };
