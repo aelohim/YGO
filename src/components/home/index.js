@@ -52,8 +52,7 @@ export default function HomeComponent() {
                         <DeckComponent deckCardList={deckCardList} removeCardFromDeckList={removeCardFromDeckList}></DeckComponent>
                     </Col>
                     <Col xs={3}>
-                        <SearchcontainerComponent cardList={filteredCardList} callback={selectedCardHandler} 
-                        deckCardList={deckCardList} removeCardFromDeckList={removeCardFromDeckList}></SearchcontainerComponent>
+                        <SearchcontainerComponent cardList={filteredCardList} seleccionar={selectedCardHandler}></SearchcontainerComponent>
                     </Col>
                 </Row>
             </Container>

@@ -1,18 +1,18 @@
 import React from "react";
 import { Col, Row } from "react-bootstrap";
 
-export default function CardselectedComponent({ card, callback, selected, deckCardList, removeCardFromDeckList }) {
+export default function CardselectedComponent({ card, callback, selected, seleccionar }) {
     const clickHandler = $event => {
         $event.preventDefault();
-        removeCardFromDeckList(card);
+        seleccionar(card);
     }
     return (
         <>
             <div className={selected ? "item selected" : "item"} >
                 <Row>
                     <Col xs={3} className="img-card-container">
-                        <div onClick={() => { callback(card) }} onContextMenu={clickHandler}>
-                            <img className="img img-fluid" src={card.card_images[0].image_url_small}></img>
+                        <div onClick={() => { callback(card) }} >
+                            <img className="img img-fluid" src={card.card_images[0].image_url_small} onContextMenu={clickHandler}></img>
                         </div>
                     </Col>
                     <Col xs={9} className="card-detail-container">
