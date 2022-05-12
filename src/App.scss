@@ -1,0 +1,43 @@
+.searchContainer {
+  overflow: scroll;
+  white-space: nowrap;
+  max-height: 500px;
+}
+
+.deck-container {
+  border: 1px solid brown;
+  display: flex;
+  flex-wrap: wrap;
+
+  .mini-card-container {
+    max-width: calc(100%/10);
+    min-width: calc(100%/10);
+  }
+}
+
+.selected {
+  background-color: #eee;
+}
+
+.item {
+  border-style: double;
+  border-color: rgb(107, 103, 103);
+
+  .row {
+    margin: 0px !important;
+
+    .img-card-container {
+      cursor: pointer;
+      padding: 0px !important;
+    }
+
+    .card-detail-container {
+      padding-left: 5px;
+
+      p {
+        margin-bottom: 0px;
+        overflow: hidden;
+      }
+    }
+  }
+}

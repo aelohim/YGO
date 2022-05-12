@@ -1,4 +1,3 @@
-import '../searchcontainer/searchcontainer.css'
 import '../cardselectcomponent/index.js'
 import CardselectedComponent from '../cardselectcomponent/index.js';
 import Button from "react-bootstrap/Button";
@@ -7,15 +6,23 @@ import { useState } from 'react';
 export default function SearchcontainerComponent({ cardList, callback }) {
     const [selectedCard, setSelectedCard] = useState({ id: 0 });
     const selectCardHandler = (card) => {
-        console.log(card);
+        // console.log(card);
         setSelectedCard(card)
     }
 
     return (<>
+        <Button
+            disabled={selectedCard.id == 0}
+            className="m-1"
+            variant="success"
+            controlId="btn_searchadd"
+            onClick={() => {
+                callback(selectedCard);
+                setSelectedCard({ id: 0 })
+            }}> + </Button>
         <div className='searchContainer'>
-            <Button className="m-1" variant="danger" controlId="btn_searchadd" onClick={() => { callback(selectedCard) }}> + </Button>
-            {cardList && cardList.data.length > 0 && cardList.data.map(card =>
-                <CardselectedComponent card={card} callback={selectCardHandler} selected={card.id === selectedCard.id}  ></CardselectedComponent>
+            {cardList && cardList.length > 0 && cardList.map(card =>
+                <CardselectedComponent key={card.id} card={card} callback={selectCardHandler} selected={card.id === selectedCard.id} ></CardselectedComponent>
             )}
         </div>
     </>

@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useRef } from "react";
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button";
 import { Col, Row, FormGroup, InputGroup, FormControl } from "react-bootstrap";
-import '../filter/filter.css';
 
-export default function FilterComponent() {
+export default function FilterComponent({ searchTextFilter }) {
+
+    const searchInputEvent = () => {
+        console.log(searchInput.current.value);
+        searchTextFilter(searchInput.current.value);
+    }
+
+    const searchInput = useRef();
     return (
         <>
             <Row className="filterform">
                 <Col>
-                    <Form>
+                    {/* <Form>
                         <Form.Group className="mb-1" id="filtro">
                             <Form.Label>Nombre</Form.Label>
                             <Form.Control type="text" placeholder="Enter name" id="txt_listname"/>
@@ -18,10 +24,10 @@ export default function FilterComponent() {
                             </Form.Text>
                         </Form.Group>
 
-                        <Button className="m-1 " variant="primary" type="submit" id="btn_new">
+                        <Button  variant="primary" type="submit" id="btn_new">
                             Crear
                         </Button>
-                        <Button className="m-1" variant="danger" id="btn_delete">
+                        <Button  variant="danger" id="btn_delete">
                             Borrar
                         </Button>
                         <FormGroup className="mb-1">
@@ -48,7 +54,7 @@ export default function FilterComponent() {
                                 <option value="3">atributo 3</option>
                             </Form.Select>
                         </FormGroup>
-                    </Form>
+                    </Form> */}
                 </Col>
                 <Col>
                     <Form>
@@ -57,8 +63,9 @@ export default function FilterComponent() {
                             <InputGroup className="mb-3" id="txt_search">
                                 <FormControl
                                     placeholder="Ingrese el nombre de la carta"
-                                    aria-label="Recipient's username"
                                     aria-describedby="basic-addon2"
+                                    onKeyUp={searchInputEvent}
+                                    ref={searchInput}
                                 />
                                 <Button variant="outline-secondary" id="btn_search">
                                     Buscar
@@ -66,26 +73,26 @@ export default function FilterComponent() {
                             </InputGroup>
                         </Form.Group>
                         <Form.Group>
-                            <Button className="m-1 " variant="primary" id="btn_sort">
+                            <Button variant="primary" id="btn_sort">
                                 Ordenar
                             </Button>
-                            <Button className="m-1 " variant="primary" id="btn_clear">
-                            Limpiar
-                        </Button>
+                            <Button variant="primary" id="btn_clear">
+                                Limpiar
+                            </Button>
                         </Form.Group>
                         <Form.Group>
-                            <Button className="m-1" variant="primary" id="btn_next">
+                            <Button variant="primary" id="btn_next">
                                 Siguiente
                             </Button>
-                            <Button className="m-1" variant="primary" id="btn_before">
+                            <Button variant="primary" id="btn_before">
                                 Posterior
                             </Button>
                         </Form.Group>
                         <Form.Group>
-                            <Button className="m-1" variant="primary" id="btn_add">
+                            <Button variant="primary" id="btn_add">
                                 Agregar
                             </Button>
-                            <Button className="m-1" variant="primary" id="btn_less">
+                            <Button variant="primary" id="btn_less">
                                 Quitar
                             </Button>
                         </Form.Group>

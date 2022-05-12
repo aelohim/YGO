@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import FilterComponent from '../filter';
 import SearchcontainerComponent from '../searchcontainer';
-import PortfolioComponent from '../portfolio';
+import DeckComponent from '../deck';
 
 export default function HomeComponent() {
-    const [cardList, setCardList] = useState({ data: [] });
-    const [deckCardList, setDeckCardList] = useState();
+    const [cardList, setCardList] = useState([]);
+    const [filteredCardList, setFilteredCardList] = useState([]);
+
+    const [deckCardList, setDeckCardList] = useState([]);
 
     useEffect(() => {
         async function getItems() {
@@ -20,47 +22,38 @@ export default function HomeComponent() {
             })
             const categorias = aux.filter((valor, indice) => { return aux.indexOf(valor) === indice; }
             )
-            // console.log(categorias);
-
-            setCardList(resp);
+            setCardList(resp.data.slice(0, 100) || []);
+            setFilteredCardList(resp.data.slice(0, 100) || []);
         };
         getItems();
     }, []);
-    // useEffect(() => {
-    //     async function getItems() {
-    //         const options = { method: 'GET', headers: { Accept: 'application/json' } }
-    //         const response = await fetch('https://db.ygoprodeck.com/api/v7/cardinfo.php', options);
-    //         const resp = await response.json();
-
-
-    //         const aux = resp.data.map(item => item.race).filter((valor, indice) => {
-    //             return resp.data.map(item => item.race).indexOf(valor) === indice;
-    //         })
-    //         const races = aux.filter((valor, indice) => { return aux.indexOf(valor) === indice; }
-    //         )
-    //         console.log(races);
-
-    //         setCardList(resp);
-    //     };
-    //     getItems();
-    // }, []);
+   
     const selectedCardHandler = card => {
         setDeckCardList([...deckCardList, card]);
-        // console.log(card)
+    }
+
+    const removeCardFromDeckList = card => {
+        setDeckCardList(deckCardList.filter(item => item.id != card.id));
+    }
+
+    const searchTextFilter = (searchText) => {
+        let aux = cardList.filter(card => card.name.toUpperCase().includes(searchText.toUpperCase()))
+        setFilteredCardList(aux);
     }
 
     return (
         <>
             <Container>
                 <Row>
-                    <FilterComponent></FilterComponent>
+                    <FilterComponent searchTextFilter={searchTextFilter}></FilterComponent>
                 </Row>
                 <Row>
                     <Col>
-                        <PortfolioComponent deckCardList={deckCardList}></PortfolioComponent>
+                        <DeckComponent deckCardList={deckCardList} removeCardFromDeckList={removeCardFromDeckList}></DeckComponent>
                     </Col>
                     <Col xs={3}>
-                        <SearchcontainerComponent cardList={cardList} callback={selectedCardHandler}></SearchcontainerComponent>
+                        <SearchcontainerComponent cardList={filteredCardList} callback={selectedCardHandler} 
+                        deckCardList={deckCardList} removeCardFromDeckList={removeCardFromDeckList}></SearchcontainerComponent>
                     </Col>
                 </Row>
             </Container>
