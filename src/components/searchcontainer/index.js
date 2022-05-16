@@ -21,7 +21,11 @@ export default function SearchcontainerComponent({ cardList, seleccionar }) {
             }}> + </Button>
         <div className='searchContainer'>
             {cardList && cardList.length > 0 && cardList.map(card =>
-                <CardselectedComponent key={card.id} card={card} callback={selectCardHandler} selected={card.id === selectedCard.i} seleccionar={seleccionar}></CardselectedComponent>
+                <CardselectedComponent key={card.id} card={card} 
+                callback={selectCardHandler} 
+                selected={card.id === selectedCard.i} 
+                seleccionar={seleccionar}>
+                </CardselectedComponent>
             )}
         </div>
     </>

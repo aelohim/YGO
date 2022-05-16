@@ -1,14 +1,27 @@
 body {
   background-color: rgb(105, 104, 104);
 }
+
 .searchContainer {
   overflow: scroll;
   white-space: nowrap;
-  max-height: 500px;
+  max-height: 550px;
 }
 
 .deck-container {
-  border: 1px solid brown;
+  border: 1px solid rgb(150, 145, 145);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch; 
+  
+  .mini-card-container {
+    max-width: calc(100%/10);
+    min-width: calc(100%/10);
+  }
+}
+
+.extra-deck-container {
+  border: 1px solid rgb(150, 145, 145);
   display: flex;
   flex-wrap: wrap;
 

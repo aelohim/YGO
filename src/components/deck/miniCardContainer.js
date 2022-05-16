@@ -1,9 +1,12 @@
 import React from "react";
 
-export default function MiniCardContainer({ card, removeCardFromDeckList }) {
+export default function MiniCardContainer({ card, removeCardFromDeckList, removeCardFromExtraDeck, index, tipoextra }) {
     const clickHandler = $event => {
         $event.preventDefault();
-        removeCardFromDeckList(card);
+        if (tipoextra.includes(card.type))
+            removeCardFromExtraDeck(index);
+        else
+            removeCardFromDeckList(index);
     }
     return (
         <>

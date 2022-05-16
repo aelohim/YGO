@@ -7,8 +7,12 @@ import DeckComponent from '../deck';
 export default function HomeComponent() {
     const [cardList, setCardList] = useState([]);
     const [filteredCardList, setFilteredCardList] = useState([]);
-
     const [deckCardList, setDeckCardList] = useState([]);
+    const [extraDeckList, setExtraDeckList] = useState([]);
+    const [sideDeckList, setSideDeckList] = useState([]);
+
+    const tipoextra = ['XYZ Monster', 'Fusion Monster', 'Link Monster', 'Synchro Monster', 'Synchro Tuner Monster', 'XYZ Pendulum Effect Monster', 'Synchro Pendulum Effect Monster'];
+    let index = 0;
 
     useEffect(() => {
         async function getItems() {
@@ -27,13 +31,24 @@ export default function HomeComponent() {
         };
         getItems();
     }, []);
-   
+
     const selectedCardHandler = card => {
-        setDeckCardList([...deckCardList, card]);
+        if (tipoextra.includes(card.type)) {
+            if (extraDeckList.filter(item => item.id == card.id).length < 3)
+                setExtraDeckList([...extraDeckList, card]);
+            console.log(extraDeckList);
+        }
+        else {
+            if (deckCardList.filter(item => item.id == card.id).length < 3)
+                setDeckCardList([...deckCardList, card]);
+        }
     }
 
-    const removeCardFromDeckList = card => {
-        setDeckCardList(deckCardList.filter(item => item.id != card.id));
+    const removeCardFromExtraDeck = index => {
+        setExtraDeckList(extraDeckList.filter((card, i) => i != index));
+    }
+    const removeCardFromDeckList = index => {
+        setDeckCardList(deckCardList.filter((card, i) => i != index));
     }
 
     const searchTextFilter = (searchText) => {
@@ -49,7 +64,14 @@ export default function HomeComponent() {
                 </Row>
                 <Row>
                     <Col>
-                        <DeckComponent deckCardList={deckCardList} removeCardFromDeckList={removeCardFromDeckList}></DeckComponent>
+                        <DeckComponent
+                            deckCardList={deckCardList}
+                            extraDeckList={extraDeckList}
+                            removeCardFromDeckList={removeCardFromDeckList}
+                            removeCardFromExtraDeck={removeCardFromExtraDeck}
+                            index={index}
+                            tipoextra={tipoextra}>
+                        </DeckComponent>
                     </Col>
                     <Col xs={3}>
                         <SearchcontainerComponent cardList={filteredCardList} seleccionar={selectedCardHandler}></SearchcontainerComponent>
