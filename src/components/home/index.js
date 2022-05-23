@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import FilterComponent from '../filter';
 import SearchcontainerComponent from '../searchcontainer';
 import DeckComponent from '../deck';
+import CardViewComponent from '../cardview';
 
 export default function HomeComponent() {
     const [cardList, setCardList] = useState([]);
@@ -24,6 +25,7 @@ export default function HomeComponent() {
             const aux = resp.data.map(item => item.type).filter((valor, indice) => {
                 return resp.data.map(item => item.type).indexOf(valor) === indice;
             })
+            console.table(aux);
             const categorias = aux.filter((valor, indice) => { return aux.indexOf(valor) === indice; }
             )
             setCardList(resp.data.slice(0, 100) || []);
@@ -63,7 +65,13 @@ export default function HomeComponent() {
                     <FilterComponent searchTextFilter={searchTextFilter}></FilterComponent>
                 </Row>
                 <Row>
-                    <Col>
+                    <Col xs={3}>
+                        <CardViewComponent
+                            deckCardList={deckCardList}
+                            extraDeckList={extraDeckList}>
+                        </CardViewComponent>
+                    </Col>
+                    <Col xs={6}>
                         <DeckComponent
                             deckCardList={deckCardList}
                             extraDeckList={extraDeckList}

@@ -10,7 +10,7 @@ export default function SearchcontainerComponent({ cardList, seleccionar }) {
     }
     
     return (<>
-        <Button
+        {/* <Button
             disabled={selectedCard.id == 0}
             className="m-1"
             variant="success"
@@ -18,7 +18,7 @@ export default function SearchcontainerComponent({ cardList, seleccionar }) {
             onClick={() => {
                 seleccionar(selectedCard);
                 setSelectedCard({ id: 0 })
-            }}> + </Button>
+            }}> + </Button> */}
         <div className='searchContainer'>
             {cardList && cardList.length > 0 && cardList.map(card =>
                 <CardselectedComponent key={card.id} card={card} 

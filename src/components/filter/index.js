@@ -15,7 +15,7 @@ export default function FilterComponent({ searchTextFilter }) {
         <>
             <Row className="filterform">
                 <Col>
-                    {/* <Form>
+                    <Form>
                         <Form.Group className="mb-1" id="filtro">
                             <Form.Label>Nombre</Form.Label>
                             <Form.Control type="text" placeholder="Enter name" id="txt_listname"/>
@@ -54,7 +54,7 @@ export default function FilterComponent({ searchTextFilter }) {
                                 <option value="3">atributo 3</option>
                             </Form.Select>
                         </FormGroup>
-                    </Form> */}
+                    </Form>
                 </Col>
                 <Col>
                     <Form>

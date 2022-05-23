@@ -12,7 +12,6 @@ body {
   border: 1px solid rgb(150, 145, 145);
   display: flex;
   flex-wrap: wrap;
-  align-items: stretch; 
   
   .mini-card-container {
     max-width: calc(100%/10);
@@ -26,8 +25,8 @@ body {
   flex-wrap: wrap;
 
   .mini-card-container {
-    max-width: calc(100%/10);
-    min-width: calc(100%/10);
+    max-width: calc(100%/15);
+    min-width: calc(100%/15);
   }
 }
 
