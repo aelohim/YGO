@@ -10,7 +10,7 @@ export default function CardViewComponent() {
                 <img className='img img-fluid' src={currentCard ? currentCard.card_images[0].image_url : ''}></img>
             </div>
             <div className="card-detail container-fluid">
-                    {<p> {currentCard ? currentCard.desc : 'Descripcion'} </p>}
+                {currentCard ? currentCard.desc : 'Descripcion' }
             </div>
         </>
     )

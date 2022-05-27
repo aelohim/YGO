@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import FilterComponent from '../filter';
 import SearchcontainerComponent from '../searchcontainer';
@@ -11,9 +11,9 @@ export default function HomeComponent() {
         <>
             <AppContext>
                 <Container>
-                    {/* <Row>
+                    <Row>
                         <FilterComponent ></FilterComponent>
-                    </Row> */}
+                    </Row>
                     <Row>
                         <Col xs={3}>
                             <CardViewComponent>

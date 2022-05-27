@@ -12,7 +12,7 @@ body {
   border: 1px solid rgb(150, 145, 145);
   display: flex;
   flex-wrap: wrap;
-  
+
   .mini-card-container {
     max-width: calc(100%/10);
     min-width: calc(100%/10);
@@ -55,4 +55,11 @@ body {
       }
     }
   }
+}
+
+.card-detail {
+  overflow-y: scroll;
+  height: 200px;
+  resize:vertical;
+  padding: 0px;
 }
