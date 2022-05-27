@@ -1,10 +1,12 @@
-import React, { useRef } from "react";
+import React, { useContext, useRef } from "react";
 import Form from "react-bootstrap/Form"
 import Button from "react-bootstrap/Button";
 import { Col, Row, FormGroup, InputGroup, FormControl } from "react-bootstrap";
+import { appContext } from "../../provider";
 
-export default function FilterComponent({ searchTextFilter }) {
+export default function FilterComponent() {
 
+    const { searchTextFilter } = useContext(appContext);
     const searchInputEvent = () => {
         console.log(searchInput.current.value);
         searchTextFilter(searchInput.current.value);
@@ -18,16 +20,15 @@ export default function FilterComponent({ searchTextFilter }) {
                     <Form>
                         <Form.Group className="mb-1" id="filtro">
                             <Form.Label>Nombre</Form.Label>
-                            <Form.Control type="text" placeholder="Enter name" id="txt_listname"/>
+                            <Form.Control type="text" placeholder="Enter name" id="txt_listname" />
                             <Form.Text className="text-muted">
                                 puede ser una carpeta, una lista o un deck.
                             </Form.Text>
                         </Form.Group>
-
-                        <Button  variant="primary" type="submit" id="btn_new">
+                        <Button variant="primary" type="submit" id="btn_new">
                             Crear
                         </Button>
-                        <Button  variant="danger" id="btn_delete">
+                        <Button variant="danger" id="btn_delete">
                             Borrar
                         </Button>
                         <FormGroup className="mb-1">

@@ -1,17 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Col, Row } from "react-bootstrap";
+import { AppContext } from "../../provider";
 
-export default function CardselectedComponent({ card, callback, selected, seleccionar }) {
-    const clickHandler = $event => {
-        $event.preventDefault();
-        seleccionar(card);
-    }
+export default function CardselectedComponent() {
+    // const addCardToDeckCardList = useContext(AppContext);
+    // const clickHandler = $event => {
+    //     $event.preventDefault();
+    //     addCardToDeckCardList(card);
+    // }
     return (
         <>
-            <div className={selected ? "item selected" : "item"} >
+            {/* <div>
                 <Row>
                     <Col xs={3} className="img-card-container">
-                        <div onClick={() => { callback(card) }} >
+                        <div>
                             <img className="img img-fluid" src={card.card_images[0].image_url_small} onContextMenu={clickHandler}></img>
                         </div>
                     </Col>
@@ -27,7 +29,7 @@ export default function CardselectedComponent({ card, callback, selected, selecc
                         </>)}
                     </Col>
                 </Row>
-            </div>
+            </div> */}
         </>
     )
 }

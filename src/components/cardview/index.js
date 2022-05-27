@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
+import { appContext } from '../../provider/index.js';
 
-export default function CardViewComponent( {deckCardList, extraDeckList, card}) {
-    return(
-    <>
-        <div className='imagen'>
-            {/* {deckCardList && deckCardList.length > 0 && deckCardList.map(card =>
-                )} */}
-            <img className='img img-fluid' src='https://storage.googleapis.com/ygoprodeck.com/pics/6983839.jpg'></img>
-        </div>
-        <div className="card-detail">
-            <h3> Descripcion </h3>
-        </div>
-    </>
-)};
+export default function CardViewComponent() {
+    const { currentCard } = useContext(appContext);
+    return (
+        <>
+            <div className='imagen'>
+                { }
+                <img className='img img-fluid' src={currentCard ? currentCard.card_images[0].image_url : ''}></img>
+            </div>
+            <div className="card-detail container-fluid">
+                    {<p> {currentCard ? currentCard.desc : 'Descripcion'} </p>}
+            </div>
+        </>
+    )
+};
